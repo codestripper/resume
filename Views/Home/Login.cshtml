@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<hr>
+
+@{
+    var returnUrl = ViewData["ReturnUrl"] as string;
+    var errorText = TempData["Error"] as string;
+}
+
+<form action="login" method="post">
+    <input type="hidden" name="returnUrl" value="@returnUrl" />
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="submit" value="login" />
+</form>
+
+@if (!string.IsNullOrEmpty(errorText)) {
+    <h6 class="alert-danger" style="padding: 20px; margin-top: 20px;">@errorText</h6>
+}

@@ -1,7 +1,31 @@
 ﻿@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+:root {
+  --main-bg-color: #FFF;
+  --main-font-color: #EEEEEE;
+  --header-bg-color: #BAC7CE;
+  --header-border-color: #BD3147;
+  --sidebar-bg-color: #304145;
+  --sidebar-accent-color: #495b5f;
+  --sidebar-font-color: #BAC7CE;
+  --sidebar-active-link-color: #BD3147;
+  --footer-bg-color: #273133;
+  --footer-font-color: #BAC7CE;
+
+  --main-bg-color-dark: #393E46;
+  --main-font-color-dark: #EEEEEE;
+  --header-bg-color-dark: #343a40;
+  --header-border-color-dark: #343a40;
+  --sidebar-bg-color-dark: #65ad6c;
+  --sidebar-accent-color-dark: #5ba562;
+  --sidebar-font-color-dark: #222831;
+  --sidebar-active-link-color-dark: #FFF;
+
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: #393E46;
+    background: var(--main-bg-color);
 }
 
 p {
@@ -9,7 +33,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #EEEEEE;
+    color: var(--main-font-color);
 }
 
 a,
@@ -22,11 +46,17 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #393E46;
+    background: var(--header-bg-color);
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom {
+  background-color: var(--header-bg-color);
+  border-bottom: 1px solid;
+  border-color: var(--header-border-color);
 }
 
 .navbar-btn {
@@ -59,8 +89,8 @@ span {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #65ad6c;
-    color: #222831;
+    background: var(--sidebar-bg-color);
+    color: var(--sidebar-font-color);
     transition: all 0.3s;
     text-align: center;
 }
@@ -73,6 +103,10 @@ span {
 
 #sidebarCollapse {
     width: 75%;
+}
+
+.btn-sidebar {
+  background-color: var(--sidebar-accent-color);
 }
 
 #sidebar.active .sidebar-header h4,
@@ -96,10 +130,6 @@ span {
 
 #sidebar.active ul li a span {
   display: none;
-}
-
-#sidebar.active ul li a:hover span {
-  display: block;
 }
 
 #mainnav.active ul li {
@@ -128,7 +158,7 @@ span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #5ba562;
+    background: var(--sidebar-accent-color);
 }
 
 #sidebar .sidebar-header strong {
@@ -138,7 +168,7 @@ span {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #5ba562;
+    border-bottom: 1px solid var(--sidebar-accent-color);
 }
 
 #sidebar ul li a {
@@ -148,7 +178,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-    background: #5ba562;
+    background: var(--sidebar-accent-color);
 }
 
 #sidebar ul li a i {
@@ -157,8 +187,8 @@ span {
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #fff;
-    background: #5ba562;
+    color: var(--sidebar-active-link-color);
+    background: var(--sidebar-accent-color);
 }
 
 a[data-toggle="collapse"] {
@@ -176,7 +206,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #5ba562;
+    background: var(--sidebar-accent-color);
 }
 
 ul.CTAs {
@@ -191,17 +221,6 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -210,4 +229,10 @@ a.article:hover {
     width: 100%;
     min-height: 100vh;
     transition: all 0.3s;
+}
+
+
+.page-footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-font-color);
 }

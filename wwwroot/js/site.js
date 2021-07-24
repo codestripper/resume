@@ -8,6 +8,10 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     function WidthCheck(x) {
         if (x.matches && !document.getElementById('sidebar').classList.contains('active')) { // If media query matches
           $('#sidebar').toggleClass('active');

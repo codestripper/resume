@@ -37,26 +37,21 @@ namespace resume.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet("login")]
-        public IActionResult Login(string returnUrl) {
-            ViewData["ReturnUrl"] = returnUrl;
+        public IActionResult Login() {
+            return Redirect("/");
+        }
+
+        [HttpGet("denied")]
+        public IActionResult Denied() {
             return View();
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Validate(string username, string password, string returnUrl) {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (username == "codestripper" && password == "toast") {
-                var claims = new List<Claim>();
-                claims.Add(new Claim("username", username));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, username));
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                await HttpContext.SignInAsync(claimsPrincipal);
-                return Redirect(returnUrl);
-            }
-            TempData["Error"] = "Error, Username or Password is incorrect!";
-            return View("login");
+        [Authorize]
+        public async Task<IActionResult> Logout() {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -12,57 +12,109 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">resume</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        
+    </header>
+    <div class="wrapper">
+        
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h4>Brent Gerstenschlager</h4>
+                <strong>BG</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#">
+                        <img src="~/fonts/icons/lego.svg" alt="play" />
+                        <span>Introduction</span>
+                    </a>
+                    <a href="#educationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <img src="~/fonts/icons/school.svg" alt="school" />
+                        <span>Education</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="educationSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li>
+                            <a href="#">Home 2</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Secured">Secured</a>
+                        <li>
+                            <a href="#">Home 3</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="#workSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <img src="~/fonts/icons/briefcase.svg" alt="briefcase" />
+                        <span>Work History</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="workSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#projectSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <img src="~/fonts/icons/code.svg" alt="code" />
+                        <span>Projects</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="projectSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                <span><img src="~/fonts/icons/arrows-right-left.svg" alt="right-left" /></span>
+            </button>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-dark bg-dark border-bottom border-dark box-shadow mb-3" id="mainnav">
+                <div class="container">
                     <ul class="navbar-nav ml-auto">
                         @if(!User.Identity.IsAuthenticated) {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                             </li>
                         } else {
                             var name = ((ClaimsIdentity) User.Identity).GetSpecificClaim(ClaimTypes.Name);
                             var picture = ((ClaimsIdentity) User.Identity).GetSpecificClaim("picture");
 
                             <li class="nav-item">
-                                <span class="navbar-text">@name <img class="rounded-circle" style="width: 30px;" src="@picture"> |</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <span class="navbar-text">@name <img class="rounded-circle" style="width: 30px;" src="@picture"> | <a class="nav-link" style="display: inline;" asp-controller="Home" asp-action="Logout">Logout</a></span>
                             </li>
                         }                        
                     </ul>
                 </div>
+            </nav>
+            <div class="container-fluid">
+                
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - resume - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

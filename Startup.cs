@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,25 @@ namespace resume
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddAuthentication(options => {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            }).AddCookie(options => {
+                options.LoginPath = "/login";
+                options.AccessDeniedPath = "/denied";
+            }).AddGoogle(options => {
+                options.ClientId = "783694431595-vebjueob41vvc7n4f4kk8jto7vsvv6c7.apps.googleusercontent.com";
+                options.ClientSecret = "wrZEuMoNVyu-zeUP6aZ55cP5";
+                options.CallbackPath = "/auth";
+                options.Events.OnCreatingTicket = (context) =>
+                    {                      
+                        var picture = context.User.GetProperty("picture").GetString();
+
+                        context.Identity.AddClaim(new Claim("picture", picture));
+
+                        return Task.CompletedTask;
+                    };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +66,7 @@ namespace resume
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

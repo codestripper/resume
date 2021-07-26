@@ -1,0 +1,6 @@
+<h1>Very Top Secret!</h1>
+
+@foreach (var item in User.Claims)
+{
+    <li>@item.Type: @item.Value</li>
+}

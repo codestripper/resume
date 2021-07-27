@@ -96,13 +96,13 @@
                     </div>
                     <ul class="collapse list-unstyled" id="projectSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#">SysAdmin Utility</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="#">Powershell Login Script</a>
                         </li>
                         <li>
-                            <a href="#">Page 3</a>
+                            <a href="#">Game Server Hosting</a>
                         </li>
                     </ul>
                 </li>
@@ -129,7 +129,7 @@
                             <a href="#">Web Development</a>
                         </li>
                         <li>
-                            <a href="#">Communication</a>
+                            <a href="#">Computer Repair</a>
                         </li>
                     </ul>
                 </li>
@@ -156,7 +156,7 @@
                     <ul class="navbar-nav ml-auto">
                         @if(!User.Identity.IsAuthenticated) {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                <a class="nav-link" style="margin-bottom: 3px; margin-top: 3px;" asp-controller="Home" asp-action="Login">Login</a>
                             </li>
                         } else {
                             var name = ((ClaimsIdentity) User.Identity).GetSpecificClaim(ClaimTypes.Name);
@@ -169,7 +169,7 @@
                     </ul>
                 </div>
             </nav>
-            <div class="container-fluid">
+            <div style="margin-bottom: 20px;" class="container-fluid">
                 @RenderBody()
             </div>
             <!-- Footer -->

@@ -3,7 +3,7 @@
 :root {
   --main-bg-color: #FFF;
   --main-font-color: #EEEEEE;
-  --header-bg-color: #BAC7CE;
+  --header-bg-color: #495b5f;
   --header-border-color: #BD3147;
   --sidebar-bg-color: #304145;
   --sidebar-accent-color: #495b5f;
@@ -33,7 +33,6 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: var(--main-font-color);
 }
 
 a,
@@ -45,17 +44,19 @@ a:focus {
 }
 
 .navbar {
+    left: -2px;
     padding: 15px 10px;
     background: var(--header-bg-color);
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--footer-font-color)
 }
 
 .navbar-custom {
   background-color: var(--header-bg-color);
-  border-bottom: 1px solid;
+  border-bottom: 2px solid;
   border-color: var(--header-border-color);
 }
 
@@ -159,6 +160,7 @@ span {
 #sidebar .sidebar-header {
     padding: 20px;
     background: var(--sidebar-accent-color);
+    border-right: 2px solid var(--header-border-color);
 }
 
 #sidebar .sidebar-header strong {
@@ -235,4 +237,22 @@ ul.CTAs a {
 .page-footer {
   background-color: var(--footer-bg-color);
   color: var(--footer-font-color);
+  margin-top: 20px;
+}
+
+/* ---------------------------------------------------
+    INDEX PAGE (Introduction)
+----------------------------------------------------- */
+
+.main-picture {
+    width: 10%; 
+    min-width: 100px;
+    float: left;
+    margin-left: 5%;
+    border: 3px solid var(--sidebar-accent-color)
+}
+
+.main-card {
+    background-color: var(--sidebar-bg-color);
+    color: var(--sidebar-font-color);
 }

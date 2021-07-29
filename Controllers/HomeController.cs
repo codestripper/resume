@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.Logging;
 using resume.Models;
 
@@ -29,6 +30,10 @@ namespace resume.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult DataAnalysis() {
             return View();
         }
 

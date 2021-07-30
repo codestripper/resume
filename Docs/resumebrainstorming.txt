@@ -1,0 +1,47 @@
+Developer Source Information:
+Server OS: Ubuntu Server 20.04 LTS ()
+Microsoft Sample SQL: (https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)
+SQL Backend: Microsoft SQL Server 2019 Express (https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+C# Framework: Microsoft Entity Framework Core (https://github.com/dotnet/efcore)
+
+DataAnalysis Page:
+- Possible Button Group at the top to switch between data examples
+- Human Resources Dashboard Page
+	- Current Job Applicants
+		- Viewable Resume (Modal)
+	- Employee Demographics
+		- Age
+		- Gender
+		- JobTitle
+		- Pay Gap Issues (~/Documents/sqlqueries/PayGapMultipointAnalysis.sql)
+		- Shift Demographics (~/Documents/sqlqueries/ShiftDemographics.sql)
+	- Invalid Addresses (USPS API) [https://www.usps.com/business/web-tools-apis/address-information-api.htm#_Toc39492052]
+		<AddressValidateRequest USERID="610NOCOM5953"><Revision>1</Revision><Address ID="0"><Address1></Address1><Address2>1970 Napa Ct.</Address2>
+		<City>Bothell</City><State>WA</State><Zip5>98011</Zip5><Zip4/></Address></AddressValidateRequest>
+		- (Setup Script to update database with Valid or InValid)
+	- Employee Phonebook (~/Documents/sqlqueries/EmployeePhonebook.sql)
+	
+- Production Dashboard (Including Purchasing)
+	- Shipping Calculator [ShipMethod], [Product] (WHERE Weight != null) (Convert G to LB)
+		- ShipBase = Minimum Shipping Charge
+		- ShipRate = Charge per Pound
+	- Inventory Monitor [Product], [ProductInventory]
+		- Products that need to be ordered
+		- Products below safety threshold
+	- Scrapped Inventory Report [WorkOrder], [ScrapReason]
+		- Shows why a majorty of product is being scrapped
+	- Late Order Statistics [WorkOrder], WorkOrderRouting
+	- Cost per unit on the rise [ProductListPriceHistory]
+		- Shows product that has been increasing in trend recently
+		- (if most recent price is greater than previous price (Top 10))
+
+-Sales Dashboard
+	- Top 5 Salespeople this year
+	- Top 10 largest customers
+	- Sales by Territory
+	- Sales by Platform (Online/InStore)
+	- Most used promotions [SpecialOffer], [SalesOrderDetail]
+		- Total loss per promotion (~/Documents/sqlqueries/TotalDiscountedFromPromos.sql)
+	- Sales by Reason [SalesReason], [SalesOrderHeaderSalesReason] (Total Orders, not total price)
+	- Popular items (~/Documents/sqlqueries/PopularItems.sql)
+	

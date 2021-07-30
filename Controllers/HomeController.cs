@@ -9,18 +9,23 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
+using resume.Data;
 using resume.Models;
+using resume.Models.AdventureWorks;
 
 namespace resume.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AdventureWorksContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AdventureWorksContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -34,7 +39,16 @@ namespace resume.Controllers
         }
 
         public IActionResult DataAnalysis() {
-            return View();
+            var data = new AnalysisData();
+            data.Phonebook = from e in _context.Employees
+                             from edh in _context.EmployeeDepartmentHistories.Where(edh => e.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
+                             from d in _context.Departments.Where(d => edh.DepartmentId == d.DepartmentId).DefaultIfEmpty()
+                             from s in _context.Shifts.Where(s => edh.ShiftId == s.ShiftId).DefaultIfEmpty()
+                             from ea in _context.EmailAddresses.Where(ea => ea.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
+                             from pp in _context.PersonPhones.Where(pp => pp.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
+                             from p in _context.People.Where(p => p.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
+                             select new PhonebookEntry(e.LoginId, p.FirstName, p.LastName, ea.EmailAddress1, pp.PhoneNumber, e.JobTitle, d.Name, s.Name, s.StartTime, s.EndTime);
+            return View(data);
         }
 
         [Authorize]

@@ -1,4 +1,18 @@
+@model AnalysisData
 
-
+@foreach (var item in Model.Phonebook)
+{
+    <ul>
+        <li><b>UserID:</b> @item.UserID</li>
+        <li><b>Name:</b> @item.FirstName @item.LastName</li>
+        <li><b>Department:</b> @item.Department</li>
+        <li><b>Title:</b> @item.JobTitle</li>
+        <li><b>Email:</b> @item.EmailAddress</li>
+        <li><b>Shift:</b> @item.Shift</li>
+        <li><b>Start Time:</b> @item.StartTime</li>
+        <li><b>End Time:</b> @item.EndTime</li>
+        <li><b>Work Phone:</b> @item.WorkNumber</li>
+    </ul>
+}
 
 <script src="~/js/dataanalysis.js" asp-append-version="true"></script>

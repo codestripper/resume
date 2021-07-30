@@ -13,13 +13,13 @@ DataAnalysis Page:
 		- Age
 		- Gender
 		- JobTitle
-		- Pay Gap Issues (~/Documents/sqlqueries/PayGapMultipointAnalysis.sql)
-		- Shift Demographics (~/Documents/sqlqueries/ShiftDemographics.sql)
+		- Pay Gap Issues (/sqlexamplequeries/PayGapMultipointAnalysis.sql)
+		- Shift Demographics (/sqlexamplequeries/ShiftDemographics.sql)
 	- Invalid Addresses (USPS API) [https://www.usps.com/business/web-tools-apis/address-information-api.htm#_Toc39492052]
-		<AddressValidateRequest USERID="610NOCOM5953"><Revision>1</Revision><Address ID="0"><Address1></Address1><Address2>1970 Napa Ct.</Address2>
+		<AddressValidateRequest USERID="XXXXXXXXXXX"><Revision>1</Revision><Address ID="0"><Address1></Address1><Address2>1970 Napa Ct.</Address2>
 		<City>Bothell</City><State>WA</State><Zip5>98011</Zip5><Zip4/></Address></AddressValidateRequest>
 		- (Setup Script to update database with Valid or InValid)
-	- Employee Phonebook (~/Documents/sqlqueries/EmployeePhonebook.sql)
+	- Employee Phonebook (/sqlexamplequeries/EmployeePhonebook.sql)
 	
 - Production Dashboard (Including Purchasing)
 	- Shipping Calculator [ShipMethod], [Product] (WHERE Weight != null) (Convert G to LB)
@@ -41,7 +41,7 @@ DataAnalysis Page:
 	- Sales by Territory
 	- Sales by Platform (Online/InStore)
 	- Most used promotions [SpecialOffer], [SalesOrderDetail]
-		- Total loss per promotion (~/Documents/sqlqueries/TotalDiscountedFromPromos.sql)
+		- Total loss per promotion (/sqlexamplequeries/TotalDiscountedFromPromos.sql)
 	- Sales by Reason [SalesReason], [SalesOrderHeaderSalesReason] (Total Orders, not total price)
-	- Popular items (~/Documents/sqlqueries/PopularItems.sql)
+	- Popular items (/sqlexamplequeries/PopularItems.sql)
 	

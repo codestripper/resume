@@ -9,7 +9,7 @@ namespace resume.Models.AdventureWorks
     {
         public int BusinessEntityId { get; set; }
         public short DepartmentId { get; set; }
-        public byte ShiftId { get; set; }
+        public int ShiftId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public DateTime ModifiedDate { get; set; }

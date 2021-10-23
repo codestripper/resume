@@ -48,7 +48,7 @@ namespace resume
                         return Task.CompletedTask;
                     };
             });
-            services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:AdventureWorks"]));
+            //services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:AdventureWorks"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

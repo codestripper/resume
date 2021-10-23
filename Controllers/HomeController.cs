@@ -20,12 +20,10 @@ namespace resume.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AdventureWorksContext _context;
 
-        public HomeController(ILogger<HomeController> logger, AdventureWorksContext context)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
         public IActionResult Index()
@@ -38,7 +36,7 @@ namespace resume.Controllers
             return View();
         }
 
-        public IActionResult DataAnalysis() {
+/*         public IActionResult DataAnalysis() {
             var data = new AnalysisData();
             data.Phonebook = from e in _context.Employees
                              from edh in _context.EmployeeDepartmentHistories.Where(edh => e.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
@@ -49,7 +47,7 @@ namespace resume.Controllers
                              from p in _context.People.Where(p => p.BusinessEntityId == edh.BusinessEntityId).DefaultIfEmpty()
                              select new PhonebookEntry(e.LoginId, p.FirstName, p.LastName, ea.EmailAddress1, pp.PhoneNumber, e.JobTitle, d.Name, s.Name, s.StartTime, s.EndTime);
             return View(data);
-        }
+        } */
 
         [Authorize]
         public IActionResult Secured() {
